@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tax Invoice</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="invoice">
+        <header class="inv-header">
+            <div class="inv-left">
+                <div class="company-name">K Trades India Private Limited</div>
+                <div class="company-address">
+                    Ground Floor, Building No.201, Godown No.3 To 5,<br>
+                    Indian Corporation, Thane Bhiwandi Road, Gundwali, Dapode,<br>
+                    Thane Maharashtra 421302<br>
+                    India<br>
+                    GSTIN 27AAJCK2937L1ZZ<br>
+                    UDYAM-MH-19-0152356
+                </div>
+            </div>
+            <div class="inv-right">TAX INVOICE</div>
+        </header>
+
+        <section class="meta">
+            <table class="meta-table">
+                <tr>
+                    <td class="meta-left">
+                        <div><strong>Invoice No</strong></div>
+                        <div class="muted">Invoice Date</div>
+                        <div class="muted">Terms</div>
+                        <div class="muted">Due Date</div>
+                    </td>
+                    <td class="meta-right">
+                        <div>: MUM-01094</div>
+                        <div>: 31/10/2025</div>
+                        <div>: Due on Receipt</div>
+                        <div>: 31/10/2025</div>
+                    </td>
+                    <td class="meta-place">
+                        <div><strong>Place Of Supply</strong></div>
+                        <div class="muted">: Maharashtra (27)</div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+                <div class="table-actions">
+                    <button type="button" id="remove-item">Remove Row</button>
+                    <button type="button" id="add-item">Add Item</button>
+                </div>
+
+        <section class="parties">
+            <div class="party bill-to">
+                <div class="party-title">Bill To</div>
+                <div class="party-name">R V Marketing</div>
+                <div class="party-addr">
+                    NAV SHAKTI WELLFARE SOCIETY UNNAT<br>
+                    NAGAR ROAD NO 2<br>
+                    PREM NAGAR NEAR<br>
+                    SIDDHESH HOTEL GOREGAON WEST,<br>
+                    Mumbai<br>
+                    400104 Maharashtra<br>
+                    India<br>
+                    FSSAI
+                </div>
+            </div>
+
+            <div class="party ship-to">
+                <div class="party-title">Ship To</div>
+                <div class="party-name">NAV SHAKTI WELLFARE SOCIETY UNNAT</div>
+                <div class="party-addr">
+                    NAGAR ROAD NO 2<br>
+                    PREM NAGAR NEAR<br>
+                    SIDDHESH HOTEL GOREGAON WEST,<br>
+                    Mumbai<br>
+                    400104 Maharashtra<br>
+                    India
+                </div>
+            </div>
+        </section>
+
+        <section class="items-section">
+            <div class="table-wrapper">
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th style="width:30px;">#</th>
+                        <th style="width:310px; text-align:left;">Item & Description</th>
+                        <th style="width:80px;">HSN /SAC</th>
+                        <th style="width:110px;">Manufactured Date</th>
+                        <th style="width:60px;">Qty</th>
+                        <th style="width:90px;">Rate</th>
+                        <th style="width:50px;">CGST %</th>
+                        <th style="width:90px;">CGST Amt</th>
+                        <th style="width:50px;">SGST %</th>
+                        <th style="width:90px;">SGST Amt</th>
+                        <th style="width:120px;">Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="invoice-items">
+                    <tr class="item-row">
+                        <td class="item-index">1</td>
+                        <td><input type="text" class="description" value="Budweiser 0.0 Can (24 x 330ml) MRP 115"></td>
+                        <td><input type="text" class="hsn" value="22029100"></td>
+                        <td><input type="date" class="mfg" value="2025-08-06"></td>
+                        <td><input type="number" class="qty" value="75.00" min="0" step="0.01"></td>
+                        <td><input type="number" class="rate" value="1349.21" min="0" step="0.01"></td>
+                        <td><input type="number" class="cgst-percent-input" value="20" min="0" max="100">%</td>
+                        <td class="cgst-amount">20238.10</td>
+                        <td><input type="number" class="sgst-percent-input" value="20" min="0" max="100">%</td>
+                        <td class="sgst-amount">20238.10</td>
+                        <td class="item-total">101190.70</td>
+                    </tr>
+                    <tr class="item-row">
+                        <td class="item-index">2</td>
+                        <td><input type="text" class="description" value="Budweiser 0.0 Peach Can (24 x 330ml) MRP 115"></td>
+                        <td><input type="text" class="hsn" value="22029100"></td>
+                        <td><input type="date" class="mfg" value="2025-09-01"></td>
+                        <td><input type="number" class="qty" value="10.00" min="0" step="0.01"></td>
+                        <td><input type="number" class="rate" value="1349.21" min="0" step="0.01"></td>
+                        <td><input type="number" class="cgst-percent-input" value="20" min="0" max="100">%</td>
+                        <td class="cgst-amount">2698.42</td>
+                        <td><input type="number" class="sgst-percent-input" value="20" min="0" max="100">%</td>
+                        <td class="sgst-amount">2698.42</td>
+                        <td class="item-total">13492.10</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <section class="notes-and-totals">
+            <div class="notes">
+                <div class="items-total">Items in Total <span id="items-count">85.00</span></div>
+                <div class="in-words">
+                    <strong>Total In Words</strong><br>
+                    Indian Rupee One Lakh Sixty Thousand Five Hundred Fifty-Five and Ninety-Nine Paise Only
+                </div>
+
+                <div class="terms">
+                    <strong>Terms & Conditions</strong><br>
+                    Registered Office Address: 808, Arcadia, NCPA Marg, 195 Nariman Point, Mumbai 400021
+                </div>
+
+                <div class="declaration">
+                    <strong>Declaration:</strong><br>
+                    We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.
+                </div>
+
+                <div class="warranty">
+                    <strong>Warranty:</strong><br>
+                    We hereby certify that foods mentioned in this invoice are warranted to be of the nature and quality they purport to be. All disputes are subject to Mumbai jurisdiction.
+                </div>
+            </div>
+
+            <div class="totals-box">
+                <table class="totals-table">
+                    <tr>
+                        <td>Sub Total</td>
+                        <td class="amt"><span id="subtotal">114682.85</span></td>
+                    </tr>
+                    <tr>
+                        <td>CGST 20% (20%)</td>
+                        <td class="amt"><span id="total-cgst">22936.57</span></td>
+                    </tr>
+                    <tr>
+                        <td>SGST 20% (20%)</td>
+                        <td class="amt"><span id="total-sgst">22936.57</span></td>
+                    </tr>
+                    <tr class="grand">
+                        <td>Total</td>
+                        <td class="amt"><span id="grand-total">₹160555.99</span></td>
+                    </tr>
+                    <tr class="balance">
+                        <td>Balance Due</td>
+                        <td class="amt"><span id="balance-due">₹160555.99</span></td>
+                    </tr>
+                </table>
+
+                <div class="auth">Authorized Signature</div>
+            </div>
+        </section>
+        <div class="form-actions" style="margin-top:8px;">
+            <button type="button" id="download-image">Download Image</button>
+        </div>
+
+    </div>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

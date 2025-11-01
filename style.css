@@ -1,0 +1,170 @@
+/* Reset */
+* { box-sizing: border-box; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  margin: 18px;
+  color: #111;
+  background: #fff;
+}
+
+/* Container */
+.invoice {
+  max-width: 960px;
+  margin: 0 auto;
+  border: 1px solid #999;
+  padding: 5px; /* reduced container padding to make overall box smaller */
+}
+
+/* Header */
+.inv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+.inv-left { max-width: 640px; }
+.company-name {
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+.company-address {
+  font-size: 10.5px;
+  line-height: 1.18;
+  color: #222;
+}
+.inv-right {
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #111;
+  text-align: right;
+}
+
+/* Meta */
+.meta-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 11px; }
+.meta-left { vertical-align: top; width: 260px; padding-right: 6px; }
+.meta-right { vertical-align: top; width: 160px; text-align: left; }
+.meta-place { vertical-align: top; text-align: right; }
+
+/* Parties */
+.parties { display: flex; gap: 10px; border-top: 1px solid #cfcfcf; border-bottom: 1px solid #cfcfcf; padding: 8px 0; margin-bottom: 6px; }
+.party { flex: 1; padding: 6px; }
+.party-title { font-weight: 700; background: #f3f3f3; padding: 4px 6px; border: 1px solid #cfcfcf; margin-bottom: 6px; font-size: 12px; }
+.party-name { font-weight: 700; margin-bottom: 6px; font-size: 12px; }
+.party-addr { font-size: 10.5px; line-height: 1.2; color: #222; }
+
+/* Items table */
+.items-section { margin-top: 8px; }
+.items-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5px; /* reduced font-size for all item text */
+}
+.items-table th, .items-table td {
+  border: 1px solid #bdbdbd;
+  padding: 1px 2px; /* reduced padding (-2px) for very tight rows */
+  text-align: center;
+  vertical-align: middle;
+}
+.items-table th { background: #f7f7f7; font-weight: 700; font-size: 9px; }
+.items-table td:nth-child(2) { text-align: left; }
+
+/* Notes and totals */
+.notes-and-totals {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+.notes { flex: 1; font-size: 11px; line-height: 1.25; }
+.items-total { margin-bottom: 6px; font-weight: 700; }
+.in-words { background: none; padding: 6px 0; font-style: italic; font-size: 11px; }
+
+.totals-box {
+  width: 280px; /* slightly smaller totals box */
+  border: 1px solid #bdbdbd;
+  padding: 6px; /* reduced padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.totals-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.totals-table td { padding: 4px 6px; border-bottom: 1px dotted #ddd; }
+.totals-table .amt { text-align: right; font-weight: 600; font-size: 11px; }
+.totals-table .grand td, .totals-table .balance td { font-weight: 700; }
+.auth { text-align: center; margin-top: 18px; font-size: 12px; }
+
+/* Fine print */
+.terms, .declaration, .warranty { margin-top: 10px; font-size: 10.5px; color: #222; }
+
+/* Small adjustments for printing */
+@media print {
+  body { margin: 0; }
+  .invoice { border: none; }
+}
+
+/* Overflow control and responsive table handling */
+html, body { overflow-x: hidden; }
+.table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.items-table th, .items-table td {
+  min-width: 0; /* allow cells to shrink */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Allow descriptions to wrap to next line instead of forcing width */
+.items-table td:nth-child(2) { white-space: normal; word-break: break-word; }
+.items-table td { line-height: 1.02; }
+
+/* Make number columns tighter and qty more visible */
+.items-table td:nth-child(1) { width: 30px; }
+.items-table td:nth-child(5), .items-table th:nth-child(5) { width: 60px; text-align: right; }
+.items-table td:nth-child(6), .items-table th:nth-child(6) { width: 80px; }
+.items-table td:nth-child(10), .items-table th:nth-child(10) { width: 95px; }
+
+/* Smaller font for CGST/SGST/Amount columns to fit more compactly */
+.items-table td:nth-child(8), .items-table th:nth-child(8),
+.items-table td:nth-child(10), .items-table th:nth-child(10),
+.items-table td:nth-child(11), .items-table th:nth-child(11) {
+  font-size: 8.8px;
+  padding: 1px 3px;
+  text-align: right;
+}
+
+/* Qty input styling: prominent but small */
+.items-table input.qty {
+  width: 56px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 9.5px;
+  padding: 1px 3px;
+  border: 1px solid #666;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* Rate and percent inputs slight smaller */
+.items-table input.rate,
+.items-table input.cgst-percent-input,
+.items-table input.sgst-percent-input {
+  padding: 1px 4px;
+  font-size: 9.5px;
+}
+/* Ensure inputs don't force cell width */
+.items-table input[type="text"], .items-table input[type="number"], .items-table input[type="date"] {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Prevent very long words in addresses from causing overflow */
+.company-address, .party-addr { word-break: break-word; }
+
+/* For printing, ensure table can break across pages if long */
+@media print {
+  .table-wrapper { overflow: visible; }
+  .items-table { page-break-inside: auto; }
+  .items-table tr { page-break-inside: avoid; page-break-after: auto; }
+}
